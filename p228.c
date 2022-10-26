@@ -3,19 +3,21 @@ int main(argc,argv)
 int argc;
 char *argv[];
 {
-
-typedef struct bio{
-
+union biodata
+{
+struct bio
+{
 char name[100];
 int age;
 float sal;
-}BIO;
+}a;
+char b[sizeof(struct bio)];
+};
+union biodata m;
 
-BIO b;
 FILE *fp;
 
 fp=fopen(argv[1],"w");
-
 
 if(argc<2){
 printf("Wrong Usage");
@@ -26,13 +28,10 @@ if(fp==NULL){
 
 printf("Error");
 return 0;
-
 }
-int i=0;
-
-for(scanf("%s",b.name);b.name[0]!='$';scanf("%s",b.name)){
-scanf("%d %f",&b.age,&b.sal);
-fprintf(fp,"%s %d %f",b.name,b.age,b.sal);
+scanf("%s %d %f",m.a.name,&m.a.age,m.a.sal);
+for(int i=0;i<sizeof(struct bio);i++){
+putc(m.b[i],fp);
 }
 fclose(fp);
 }

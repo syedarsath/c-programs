@@ -4,7 +4,7 @@ char ch;
 
 FILE *fp;
 
-fp=fopen("bio.txt","r");
+fp=fopen("test.c","r");
 
 if(fp==NULL){
 

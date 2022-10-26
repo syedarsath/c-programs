@@ -1,4 +1,4 @@
-//208
+//209
 #include<stdio.h>
 int main(argc,argv)
 int argc;
@@ -20,9 +20,11 @@ printf("Error");
 return 0;
 }
 
-for(scanf("%c",&ch);ch!='$';scanf("%c",&ch)){
 
-fprintf(fp,"%c",ch);
+while((ch=getchar())!='$'){
+
+putc(ch,fp);
 }
+
 fclose(fp);
 }

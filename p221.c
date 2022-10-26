@@ -1,18 +1,13 @@
+//221
+
 #include<stdio.h>
 int main(argc,argv)
 int argc;
 char *argv[];
 {
 
-typedef struct bio{
-
-char name[100];
-int age;
-float sal;
-
-}BIO;
-
-BIO b;
+int i,m;
+char ch[100];
 FILE *fp;
 
 fp=fopen(argv[1],"r");
@@ -28,11 +23,19 @@ printf("Error");
 return 0;
 }
 
-while(feof(fp)==0){
-fscanf(fp,"%s %d %f",b.name,&b.age,&b.sal);
-printf("Name:%s\nAge:%d\nSalary:%f\n",b.name,b.age,b.sal);
+int l=0;
+m=1;
+for(i=0;(ch[i]=getc(fp))!=EOF;i++){
+
+if(ch[i]=='\n'){
+ch[i]='\0';
+l++;
+printf("Page%d Line%d:%s\n",m,l,ch);
+if(l%24==0){
+scanf("%d",&m);
 }
+i=-1;
+}}
 
 fclose(fp);
-
 }

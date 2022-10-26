@@ -1,13 +1,15 @@
-//208
+//218
 #include<stdio.h>
 int main(argc,argv)
 int argc;
 char *argv[];
 {
-char ch;
+
+int i;
+char ch[100];
 FILE *fp;
 
-fp=fopen(argv[1],"w");
+fp=fopen(argv[1],"r");
 
 if(argc<2){
 printf("Wrong Usage");
@@ -20,9 +22,14 @@ printf("Error");
 return 0;
 }
 
-for(scanf("%c",&ch);ch!='$';scanf("%c",&ch)){
 
-fprintf(fp,"%c",ch);
+for(i=0;(ch[i]=getc(fp))!=EOF;i++);
+
+ch[i]='\0';
+
+for(i=0;ch[i]!='\0';i++){
+putchar(ch[i]);
 }
+
 fclose(fp);
 }
