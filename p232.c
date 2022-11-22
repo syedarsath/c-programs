@@ -14,7 +14,7 @@ float sal;
 char b[sizeof(struct bio)];
 };
 union biodata m;
-
+float pf,hra;
 FILE *fp;
 
 fp=fopen(argv[1],"r");
@@ -29,12 +29,14 @@ if(fp==NULL){
 printf("Error");
 return 0;
 }
-
-for(int i=0;i<sizeof(struct bio);i++)
-{
+int n;
+printf("Enter which record you want to display:");
+scanf("%d",&n);
+int offset=(n-1)*sizeof(struct bio);
+fseek(fp,offset,0);
+for(int i=0;i<sizeof(struct bio);i++){
 m.b[i]=getc(fp);
 }
-printf("%s %d %f",m.a.name,m.a.age,m.a.sal);
-
+printf("Name:%s\nAge:%d\nSalary:%f\n",m.a.name,m.a.age,m.a.sal);
 fclose(fp);
 }

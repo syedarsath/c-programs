@@ -17,7 +17,7 @@ union biodata m;
 
 FILE *fp;
 
-fp=fopen(argv[1],"r");
+fp=fopen(argv[1],"w");
 
 if(argc<2){
 printf("Wrong Usage");
@@ -30,11 +30,16 @@ printf("Error");
 return 0;
 }
 
-for(int i=0;i<sizeof(struct bio);i++)
-{
-m.b[i]=getc(fp);
+for(scanf("%s",m.a.name);m.a.name[0]!='$';scanf("%s",m.a.name)){
+
+scanf("%d",&m.a.age);
+scanf("%f",&m.a.sal);
+
+for(int i=0;i<sizeof(struct bio);i++){
+
+putc(m.b[i],fp);
 }
-printf("%s %d %f",m.a.name,m.a.age,m.a.sal);
+}
 
 fclose(fp);
 }

@@ -29,7 +29,7 @@ if(fp==NULL){
 printf("Error");
 return 0;
 }
-scanf("%s %d %f",m.a.name,&m.a.age,m.a.sal);
+scanf("%s %d %f",m.a.name,&m.a.age,&m.a.sal);
 for(int i=0;i<sizeof(struct bio);i++){
 putc(m.b[i],fp);
 }
